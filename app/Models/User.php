@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -19,7 +20,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'prenom',
         'email',
+        'cin',
         'password',
     ];
 
@@ -42,4 +45,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+        public function globalAdmin() {
+            return $this->hasOne(GlobalAdmin::class);
+        }
+
+public function etablissement()
+{
+    return $this->belongsTo(Etablissement::class, 'etablissement_id'); // Remplacez 'etablissement_id' par la bonne clé étrangère
+}
+
+    public function Admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
+    public function Superadmin()
+    {
+        return $this->hasOne(Superadmin::class);
+    }
+
+
 }

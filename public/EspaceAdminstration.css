@@ -1,0 +1,110 @@
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .sidebar {
+    background-color: #343a40;
+    color: #fff;
+    height: 100vh; /* Toute la hauteur de la fenêtre */
+    width: 250px; /* Largeur fixe pour la barre */
+    position: fixed; /* Fixé à gauche */
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    overflow-y: auto;
+  }
+
+  .sidebar a {
+    color: #adb5bd;
+    text-decoration: none;
+    height: 50px;
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+
+  }
+
+  .sidebar a:hover {
+    color: #3cc2f2;
+    background-color: #495057;
+
+    border-left: solid 2px #3cc2f2;
+    border-right: solid 2px #3cc2f2;
+  }
+
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 250px; /* Décalage pour la barre latérale */
+    right: 0;
+    z-index: 1030; /* Assurez-vous que l'en-tête est au-dessus du contenu */
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .content {
+    margin-left: 250px; /* Ajuste les marges pour inclure la barre latérale */
+    padding: 80px 20px 20px; /* Ajoute un padding en haut pour éviter que le contenu ne soit caché par l'en-tête */
+    overflow-y: auto; /* Permet le défilement du contenu */
+    height: calc(100vh - 70px); /* Hauteur du contenu */
+  }
+
+  .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    text-align: center;
+    padding: 12px;
+  }
+
+  thead {
+    background-color: #007bff;
+    color: white;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #d6e4ff;
+  }
+
+  .btn {
+    margin: 0 5px;
+  }
+
+  .btn-info {
+    background-color: #17a2b8;
+    border: none;
+  }
+
+  .btn-warning {
+    background-color: #ffc107;
+    border: none;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+  }
+

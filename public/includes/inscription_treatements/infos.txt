@@ -1,0 +1,27 @@
+/** vars de sessions **/
+        $_SESSION['email']
+        $_SESSION['password'] 
+        $_SESSION['nom'] 
+        $_SESSION['prenom'] 
+        $_SESSION['id'] 
+        $_SESSION['role'] 
+
+
+/** the style elements exist in the correspendant file and there is some boostrap styling to keep in mind **/
+
+
+/** u can hash the password by uncommenting the line 52 in sighup_treatement.php , for the porpuse of testing i left it normal **/
+
+
+/** i didn't work on the recovery of the password yet **/
+
+/** sql code to excute in phpmyadmin (i added some additional columns for more info if needed)  **/
+    alert table utilisateurs add column genre varchar(50);
+    alert table utilisateurs add column ville varchar(50);
+    alert table utilisateurs add column date_naissance date;
+    alert table utilisateurs add column CIN varchar(50);
+    alert table utilisateurs add column region varchar(50);
+    alert table utilisateurs add column tele varchar(50);
+    alert table utilisateurs add column region varchar(50);
+    alert table utilisateurs add column temp_email varchar(50); //contains the generated stagaire eamil 'date_naissance + CIN@edu-ac.ma'
+    
