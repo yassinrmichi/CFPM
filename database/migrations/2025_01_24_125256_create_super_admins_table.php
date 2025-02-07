@@ -16,14 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->unique(); // Référence à l'utilisateur
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->binary('image')->nullable();
-
-            // Référence à l'établissement
-            $table->unsignedBigInteger('establishment_id'); // Référence à l'établissement sans le "unique"
-            $table->foreign('establishment_id')->references('id')->on('etablissements')->onDelete('cascade');
+            $table->string('name');
+            $table->string('prenom');
+            $table->string('cin')->unique();
+            $table->unsignedBigInteger('etablissement_id'); // Référence à l'établissement sans le "unique"
+            $table->foreign('etablissement_id')->references('id')->on('etablissements')->onDelete('cascade');
 
             $table->string('telephone')->nullable(); // Numéro de téléphone
             $table->string('adresse')->nullable(); // Adresse
-            $table->string('cin')->nullable(); // Carte d'identité nationale
             $table->decimal('salaire', 10, 2)->nullable(); // Salaire
             $table->timestamps();
         });

@@ -80,27 +80,9 @@
 
             <form action="{{route('user.store')}}" id="register-form"  method="POST">
                 @csrf
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="form-outline">
-                            <input type="text" name="name" id="name" class="form-control" required/>
-                            <label class="form-label" for="name">Votre Nom</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-outline">
-                            <input type="text" name="prenom" id="prenom" class="form-control" required/>
-                            <label class="form-label" for="prenom">Votre prenom</label>
-                        </div>
-                    </div>
-                </div>
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="email" name="email" id="email" class="form-control form-control-lg" required/>
                     <label class="form-label" for="email">Votre E-mail</label>
-                </div>
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="text" name="cin" id="cin" class="form-control form-control-lg" required/>
-                    <label class="form-label" for="email">Votre CIN</label>
                 </div>
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="password" name="password" id="pass" class="form-control form-control-lg" required/>

@@ -59,8 +59,8 @@
         <!-- Dropdown utilisateur si connecté -->
         @auth
         <div class="dropdown">
-          <div class="dropdown-toggle h6 text-primary"  id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            {{ auth()->user()->name }} {{ auth()->user()->prenom }}
+          <div class="dropdown-toggle h6 text-dark"  id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ Str::before(auth()->user()->email, '@') }}
           </div>
           <ul class="dropdown-menu" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i>Profil</a></li>

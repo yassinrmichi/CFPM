@@ -1,54 +1,11 @@
 @include('GlobalAdmin.headerGA')
+<style>
+    .card-body label {
+    text-align: right !important;
+}
+</style>
 <div class="container mt-5">
-    <style>
-        .card {
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-.card-header {
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.form-label {
-    font-weight: 600;
-}
-
-.form-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    font-size: 16px;
-    transition: border-color 0.3s ease-in-out;
-}
-
-.form-select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    border-radius: 8px;
-    padding: 0.5rem 1.5rem;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-.invalid-feedback {
-    font-size: 0.875rem;
-    color: #dc3545;
-}
-    </style>
     @if (session('success'))
     <div class="container-fluide text-center mt-5">
         <div
@@ -69,51 +26,90 @@
         </div>
     </div>
     @endif
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header bg-dark text-white">
-                    <h4>Ajouter un Administrateur Global</h4>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h4 class="mb-0">Ajouter un Administrateur Global</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-4">
                     <form action="{{ route('globalAdmins.updateUserToAdmin') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <!-- CIN -->
-                        <div class="mb-3">
-                            <label for="cin" class="form-label">CIN</label>
-                            <input type="text" name="cin" id="cin" class="form-control" placeholder="Carte d'Identité Nationale">
+                        <div class="mb-4">
+                            <label for="cin" class="form-label fw-bold">Nom</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="entrer Votre name" required>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="cin" class="form-label">Email</label>
-                            <input type="text" name="email" id="email" class="form-control" placeholder="enter email de l'utilisateur">
+                        <div class="mb-4">
+                            <label for="cin" class="form-label fw-bold">Prenom</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Entrer votre prenom" required>
+                            </div>
                         </div>
+                        <div class="mb-4">
+                            <label for="cin" class="form-label fw-bold">CIN</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                <input type="text" name="cin" id="cin" class="form-control" placeholder="Carte d'Identité Nationale" required>
+                            </div>
+                        </div>
+
+
+                        <hr>
+                        <div class="mb-4">
+                            <label for="email" class="form-label fw-bold">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Entrer l'email de l'utilisateur" required>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <!-- Établissement -->
+                        <div class="mb-4">
+                            <label for="etablissement" class="form-label fw-bold">Établissement</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-school"></i></span>
+                                <select class="form-select" name="etablissement" id="etablissement" required>
+                                    <option selected disabled>Veuillez sélectionner un Établissement</option>
+                                    @foreach ($Etablissements as $etablissement)
+                                        <option value="{{$etablissement->id}}">{{$etablissement->nom}} , {{$etablissement->adresse}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
 
                         <!-- Rôle -->
-                        <div class="mb-3">
-                            <label for="role" class="form-label">Etablissement :</label>
-                            <select class="form-select" name="etablissement" id="Etablissement">
-                                <option selected disabled>Veuillez sélectionner un Etablissement</option>
-                                @foreach ($Etablissements as $etablissement)
-                                <option value="{{$etablissement->id}}">{{$etablissement->nom}} , {{$etablissement->adresse}}</option>
-                                @endforeach
-                            </select>
+                        <div class="mb-4">
+                            <label for="role" class="form-label fw-bold">Rôle</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user-shield"></i></span>
+                                <select class="form-select" name="role" id="role" required>
+                                    <option selected disabled>Veuillez sélectionner un rôle</option>
+                                    <option value="superAdmin">Super Admin</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="role" class="form-label">Rôle</label>
-                            <select class="form-select" name="role" id="role">
-                                <option selected disabled>Veuillez sélectionner un rôle</option>
-                                <option value="superAdmin">Super Admin</option>
-                                <option value="admin">Admin</option>
-                            </select>
-                        </div>
+                        <hr>
 
-                        <button type="submit" class="btn btn-primary w-100">Ajouter</button>
+                        <!-- Boutons -->
+                        <div class="d-flex justify-content-end mt-5">
+                            <button type="submit" class="btn btn-primary fw-bold me-2 shadow-sm w-100">
+                                <i class="fas fa-plus-circle"></i> Ajouter
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 

@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('globaladmins', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique(); // Référence à l'utilisateur
+            $table->string('name');
+            $table->string('prenom');
+            $table->string('cin')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->binary('image')->nullable();
             $table->string('telephone')->nullable(); // Numéro de téléphone
             $table->string('adresse')->nullable(); // Adresse
-            $table->string('cin')->nullable(); // Carte d'identité nationale
             $table->timestamps();
         });
     }

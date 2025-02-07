@@ -11,14 +11,22 @@ class GlobalAdmin extends Model
 
     protected $table = 'globaladmins';
 
-    protected $fillable = ['user_id', 'image', 'telephone', 'adresse', 'cin', 'salaire'];
+    protected $fillable = [
+        'user_id',
+        'name',
+        'prenom',
+        'cin',
+        'image',
+        'telephone',
+        'adresse',
+    ];
 
     // Relation avec le modèle User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
 
 
 }

@@ -40,6 +40,14 @@
                                 <label for="telephone" class="form-label">Téléphone</label>
                                 <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Entrez le numéro de téléphone">
                             </div>
+                            <div class="mb-3">
+                                <label for="telephone" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Entrez le numéro de nom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="telephone" class="form-label">prenom</label>
+                                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le numéro de prenom">
+                            </div>
 
                             <!-- Adresse -->
                             <div class="mb-3">

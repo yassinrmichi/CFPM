@@ -22,10 +22,28 @@
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Pe-icon-7-stroke/1.2.0/pe-icon-7-stroke.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
    <style>
 
-
+<style>
+        .stat-widget-five {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .stat-icon {
+            font-size: 2rem;
+        }
+        .card-body {
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
     </style>
 </head>
 
@@ -35,13 +53,16 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="">
-                        <a href="{{route('profile',auth()->user()->id)}}"><i class="menu-icon fa fa-user"></i>Profile </a>
+                        <a href="{{route('profileGA',auth()->user()->id)}}"><i class="menu-icon fa fa-user"></i>Profile </a>
                     </li>
                     <li class="">
                         <a href="{{ route('GlobalAdmins.EspaceGlobalAdmin') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li class="menu-item">
                         <a href="{{route('globalAdmins.editUserToAdmin')}}" class="""> <i class="menu-icon fas fa-user-shield"></i>Ajouter Admins</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{route('globalAdmins.GestionEtablissement')}}" class="""> <i class="menu-icon fas fa-school"></i>Gestion Etablissements</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

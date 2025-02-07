@@ -15,10 +15,7 @@ class UserController extends Controller
     function store(Request $request){
 try{
     $validateForm = $request->validate([
-        'name' => 'required|string',
-        'prenom' => 'required|string',
         'email' => 'required|email',
-        'cin' => 'required',
         'password' => 'required|min:8',]);
     $validateForm['password'] = Hash::make($validateForm['password']);
     User::create($validateForm);
@@ -62,16 +59,16 @@ try{
 }
 
 
-public function profile($id)
-{
-    $user = User::with(['globalAdmin', 'admin', 'superAdmin','etablissement'])->find($id);
+// public function profile($id)
+// {
+//     $user = User::with(['globalAdmin', 'admin', 'superAdmin','etablissement'])->find($id);
 
-    if (!$user) {
-        abort(404, 'Utilisateur non trouvé');
-    }
+//     if (!$user) {
+//         abort(404, 'Utilisateur non trouvé');
+//     }
 
-    return view('Profile',['user'=>$user]);
-}
+//     return view('Profile',['user'=>$user]);
+// }
 
 
 
