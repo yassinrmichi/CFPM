@@ -48,10 +48,6 @@
 
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">CFPM</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-
-        Designed by <a href="#">TEAM DEV-FULL STACK 201</a> Distributed By <a href="#">CFPM</a>
-      </div>
     </div>
 
   </footer>

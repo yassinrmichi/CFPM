@@ -49,6 +49,26 @@
         background-color: #5a6268;
         border-color: #545b62;
     }
+    .position-relative {
+    position: relative;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(5, 58, 119, 0.6);
+    color: white;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-icon:hover {
+    background: rgba(3, 57, 101, 0.8);
+}
+
 </style>
 <section style="background-color: #eee;" class="mt-5">
     <div class="container mt-5">
@@ -56,7 +76,13 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="{{ asset('storage/' . $globalAdmins->globalAdmin->image) }}" alt="avatar" class="profile-img rounded-circle">
+                        <div class="position-relative d-inline-block">
+                            <img src="{{ asset('storage/' . $globalAdmins->globalAdmin->image) }}" alt="avatar" class="profile-img rounded-circle">
+                            <label for="upload-image" class="edit-icon">
+                                <i class="fas fa-camera"></i>
+                            </label>
+                            <input type="file" id="upload-image" class="d-none">
+                        </div>
                         <h5 class="my-3">{{ $globalAdmins->globalAdmin->name }} {{ $globalAdmins->globalAdmin->prenom }}</h5>
                         <p class="mb-4" style="font-size: 16px; font-weight: bold; color: #282827;">
                             M. {{ strtoupper($globalAdmins->globalAdmin->name) }} {{ strtoupper($globalAdmins->globalAdmin->prenom) }}, Directeur général de CFPM
@@ -68,55 +94,87 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-body p-4" id="cardInfo">
+                        <h2 class="text-muted" style="font-size: 26px">votre informations personnelle</h2>
+                        <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0"><i class="fas fa-user info-icon"></i> Nom complet</p>
+                                <p class="mb-0">Nom</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0 info">{{ $globalAdmins->globalAdmin->name }} {{ $globalAdmins->globalAdmin->prenom }}</p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <p  class="text-dark ml-2" id="email" name="email">{{ $globalAdmins->globalAdmin->name }}</p>
+                                </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0"><i class="fas fa-envelope info-icon"></i> Email</p>
+                                <p class="mb-0">Prénom</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0 info">{{$globalAdmins->email}}</p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <p  class="text-dark ml-2" id="email" name="email">{{ $globalAdmins->globalAdmin->prenom }}</p>
+                                </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0"><i class="fas fa-phone info-icon"></i> Téléphone</p>
+                                <p class="mb-0">CIN</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0 info">{{$globalAdmins->globalAdmin?->telephone ?? 'Non spécifié'}}</p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                    <p  class="text-dark ml-2" id="email" name="email">{{ $globalAdmins->globalAdmin->cin }}</p>
+                                </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0"><i class="fas fa-map-marker-alt info-icon"></i> Adresse</p>
+                                <p class="mb-0">Adresse</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0 info">{{$globalAdmins->globalAdmin->adresse}}</p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                    <p  class="text-dark ml-2" id="email" name="email">{{ $globalAdmins->globalAdmin->adresse }}</p>
+                                </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0"><i class="fas fa-id-card info-icon"></i> CIN</p>
+                                <p class="mb-0">Téléphone</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0 info">{{$globalAdmins->globalAdmin->cin}}</p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <p  class="text-dark ml-2" id="email" name="email">{{ $globalAdmins->globalAdmin->telephone }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <p  class="text-dark ml-2" id="email" name="email">{{ $globalAdmins->email }}</>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
                     <div class="card-body p-5 d-none" id="cardEdite">
                         <form action="{{ route('update.globaladmin', $globalAdmins->id) }}" method="POST">
                             @csrf

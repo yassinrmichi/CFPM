@@ -64,6 +64,9 @@
                     <li class="menu-item">
                         <a href="{{route('globalAdmins.GestionEtablissement')}}" class="""> <i class="menu-icon fas fa-school"></i>Gestion Etablissements</a>
                     </li>
+                    <li class="menu-item">
+                        <a href="{{route('Filiere.create')}}" class="""> <i class="menu-icon fas fa-graduation-cap"></i>Gestion Filieres</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

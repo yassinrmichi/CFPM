@@ -128,7 +128,7 @@
                     _token: '{{ csrf_token() }}'
                 },
                 success: function(response) {
-                    alert(response.message); // Affiche un message de confirmation
+                    alert(response.message);
                     refreshTable();
                 },
                 error: function(xhr) {
